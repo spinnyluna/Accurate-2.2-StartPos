@@ -18,23 +18,24 @@ class $modify(PlayLayer) {
     }
 
     void updateStartPosPercent() {
-        if (!this->m_player1) {
-            log::warn("No player object found!");
+        if (!this->m_player1)return;
+
+        if (!this->m_startPosObject)return;
+
+
+        if(!m_level->m_timestamp){
             return;
         }
 
-        auto startPos = this->m_player1->getStartPos();
-        auto endPos = this->getEndPosition();
+        float currTime = this->timeForPos(m_startPosObject->getStartPos(), 0, this->m_gameState.m_currentChannel, true, -1);
 
-        float songTime = this->timeForPos(startPos, 0, 0, true, -1);
-        float levelTime = this->timeForPos(endPos, 0, 0, true, -1);
 
-        this->m_fields->m_startPosPercent = (songTime / levelTime) * 100.0f;
-        this->m_fields->active = 0 == PlayLayer::getCurrentPercent();
+
+        this->m_fields->m_startPosPercent = (currTime / (this->m_level->m_timestamp / 240)) * 100.0f;
     }
 
     float getCurrentPercent() {
-        if (!this->m_player1 || this->m_fields->m_startPosPercent < 0.f || !this->m_fields->active)
+        if (!this->m_player1 || this->m_fields->m_startPosPercent < 0.f || !this->m_startPosObject || !m_level->m_timestamp)
             return PlayLayer::getCurrentPercent();
 
         float basePercent = this->m_fields->m_startPosPercent;
