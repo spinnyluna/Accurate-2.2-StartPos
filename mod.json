@@ -8,7 +8,11 @@
 	},
 	"id": "spinnyluna.accpercentage",
 	"name": "2.2 StartPos Percentages",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "spinnyLuna",
-	"description": "This mod fixes Percentages in 2.2 Levels using StartPos. This only works in 2.2 levels and uses the correct time based percentages, instead of x-position. This mod probably doesnt work correctly if you have levels with direction changes."
+	"description": "This mod fixes Percentages in 2.2 Levels using StartPos. This only works in 2.2 levels and uses the correct time based percentages, instead of x-position. For 2.1 StartPos copies made in 2.2 you will still need a dedicated mod for that.",
+	"tags": [
+		"utility",
+		"bugfix"
+	]
 }

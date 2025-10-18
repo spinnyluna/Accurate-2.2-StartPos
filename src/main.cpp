@@ -19,7 +19,7 @@ class $modify(PlayLayer) {
 
     void updateStartPosPercent() {
         if (!this->m_player1)return;
-
+        if(this->m_isPlatformer)return;
         if (!this->m_startPosObject)return;
 
 
@@ -35,7 +35,7 @@ class $modify(PlayLayer) {
     }
 
     float getCurrentPercent() {
-        if (!this->m_player1 || this->m_fields->m_startPosPercent < 0.f || !this->m_startPosObject || !m_level->m_timestamp)
+        if (!this->m_player1 || this->m_fields->m_startPosPercent < 0.f || !this->m_startPosObject || !m_level->m_timestamp || this->m_isPlatformer)
             return PlayLayer::getCurrentPercent();
 
         float basePercent = this->m_fields->m_startPosPercent;
